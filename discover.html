@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HiTraveller | Discover Destinations</title>
+  <link rel="stylesheet" href="styles/general.css" />
+  <script type="module" src="scripts/discover.js" defer></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">HiTraveller</div>
+
+    <!-- Hamburger menu for mobile -->
+    <button class="hamburger" aria-label="Toggle navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <nav class="nav-links">
+      <a href="index.html">Welcome</a>
+      <a href="discover.html" class="active">Discover</a>
+      <a href="itinerary.html">Favorite</a>
+    </nav>
+
+    <button class="btn-signin">Sign In</button>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="discover-hero">
+      <div class="discover-text">
+        <h1>Discover Top Travel Destinations</h1>
+        <p>Find inspiration for your next journey — from iconic cities to hidden gems worldwide.</p>
+      </div>
+    </section>
+
+    <section class="discover-section">
+      <h2>Explore Our Curated List</h2>
+      <div class="destination-list">
+        <!-- Destination cards will be inserted dynamically -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+    <footer class="footer">
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h3>Column one</h3>
+        <ul>
+          <li><a href="#">Link one</a></li>
+          <li><a href="#">Link two</a></li>
+          <li><a href="#">Link three</a></li>
+          <li><a href="#">Link four</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Column two</h3>
+        <ul>
+          <li><a href="#">Link five</a></li>
+          <li><a href="#">Link six</a></li>
+          <li><a href="#">Link seven</a></li>
+          <li><a href="#">Link eight</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Column three</h3>
+        <ul>
+          <li><a href="#">Link nine</a></li>
+          <li><a href="#">Link ten</a></li>
+          <li><a href="#">Link eleven</a></li>
+          <li><a href="#">Link twelve</a></li>
+        </ul>
+      </div>
+
+      <div class="subscribe">
+        <h3>Subscribe</h3>
+        <p>Simply enter your email below:</p>
+        <form id="subscribeForm">
+          <input type="email" placeholder="Your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+        <small>By subscribing, you agree to our Privacy Policy.</small>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 HiTraveller. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+

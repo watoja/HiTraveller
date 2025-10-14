@@ -1,0 +1,92 @@
+{
+  "destinations": [
+    {
+      "id": 1,
+      "name": "Paris, France",
+      "country": "France",
+      "region": "Europe",
+      "description": "Experience the City of Lights with its iconic Eiffel Tower, romantic cafes, and rich art culture.",
+      "image": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34",
+      "average_price": 1200,
+      "best_season": "Spring",
+      "rating": 4.8
+    },
+    {
+      "id": 2,
+      "name": "Tokyo, Japan",
+      "country": "Japan",
+      "region": "Asia",
+      "description": "Explore Japan’s vibrant capital—where futuristic technology meets ancient traditions and world-class cuisine.",
+      "image": "https://images.unsplash.com/photo-1505066836043-7a2ae83d1338",
+      "average_price": 1500,
+      "best_season": "Autumn",
+      "rating": 4.9
+    },
+    {
+      "id": 3,
+      "name": "New York City, USA",
+      "country": "United States",
+      "region": "North America",
+      "description": "Discover the Big Apple, home to Times Square, Broadway, and an endless skyline that never sleeps.",
+      "image": "https://images.unsplash.com/photo-1549924231-f129b911e442",
+      "average_price": 1100,
+      "best_season": "Fall",
+      "rating": 4.7
+    },
+    {
+      "id": 4,
+      "name": "Cape Town, South Africa",
+      "country": "South Africa",
+      "region": "Africa",
+      "description": "A coastal gem at the foot of Table Mountain, offering ocean views, culture, and stunning wildlife.",
+      "image": "https://images.unsplash.com/photo-1542051841857-5f90071e7989",
+      "average_price": 900,
+      "best_season": "Summer",
+      "rating": 4.6
+    },
+    {
+      "id": 5,
+      "name": "Sydney, Australia",
+      "country": "Australia",
+      "region": "Oceania",
+      "description": "Visit the Sydney Opera House, enjoy sunny beaches, and explore vibrant harbor life.",
+      "image": "https://images.unsplash.com/photo-1506976785307-8732e854ad75",
+      "average_price": 1400,
+      "best_season": "Spring",
+      "rating": 4.8
+    },
+    {
+      "id": 6,
+      "name": "Rome, Italy",
+      "country": "Italy",
+      "region": "Europe",
+      "description": "Walk through ancient history in Rome—home to the Colosseum, Roman Forum, and incredible Italian cuisine.",
+      "image": "https://images.unsplash.com/photo-1509395176047-4a66953fd231",
+      "average_price": 1000,
+      "best_season": "Fall",
+      "rating": 4.7
+    },
+    {
+      "id": 7,
+      "name": "Dubai, UAE",
+      "country": "United Arab Emirates",
+      "region": "Middle East",
+      "description": "A luxury city blending desert adventures, futuristic skyscrapers, and world-class shopping.",
+      "image": "https://images.unsplash.com/photo-1504274066651-8d31a536b11a",
+      "average_price": 1300,
+      "best_season": "Winter",
+      "rating": 4.8
+    },
+    {
+      "id": 8,
+      "name": "Rio de Janeiro, Brazil",
+      "country": "Brazil",
+      "region": "South America",
+      "description": "Dance to the rhythm of samba, relax on Copacabana Beach, and marvel at Christ the Redeemer.",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+      "average_price": 950,
+      "best_season": "Summer",
+      "rating": 4.6
+    }
+  ]
+}
