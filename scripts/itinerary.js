@@ -1,7 +1,7 @@
 /****************************************************
  * FILE: itinerary.js
  * ---------------------------------------------
- * PURPOSE: AI Itinerary generation and local storage for Saved Trips.
+ * PURPOSE: Local Itinerary generation and storage for Saved Trips.
  ****************************************************/
 document.addEventListener('DOMContentLoaded', () => {
     const planBtn = document.getElementById('planBtn');
@@ -10,10 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const planResult = document.getElementById('planResult');
     const savedList = document.getElementById('savedList');
 
-    // --- ⚠️ INSECURE: YOUR OPENAI API KEY ---
-    const OPENAI_API_KEY = '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'; 
-    // ------------------------------------------
-    
     // Load saved trips on page load
     loadSavedItineraries(); 
 
@@ -35,48 +31,21 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        planResult.innerHTML = '<h3>🤖 Generating Itinerary...</h3><p>The AI is planning your personalized trip: "' + userPlan + '"</p>';
+        planResult.innerHTML = '<h3>📝 Generating Itinerary...</h3><p>Creating a sample itinerary for: "' + userPlan + '"</p>';
         planBtn.disabled = true;
 
         try {
-            // =======================================================
-            // 💡 OPENAI API DIRECT CALL: Itinerary Generator (Text Generation)
-            // =======================================================
-            const API_URL = 'https://api.openai.com/v1/chat/completions';
-            const prompt = `Generate a detailed, day-by-day travel plan based on the user's prompt: ${userPlan}. Structure the output using clear markdown headings and bulleted lists for readability.`;
-            
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + OPENAI_API_KEY
-                },
-                body: JSON.stringify({ 
-                    model: "gpt-3.5-turbo",
-                    messages: [
-                        {"role": "system", "content": "You are a professional travel planner. Generate a detailed, multi-day itinerary in markdown format."},
-                        {"role": "user", "content": prompt}
-                    ],
-                    max_tokens: 1000 
-                })
-            });
+            // Using mock/local data to generate itinerary
+            const itineraryData = mockItineraryGenerator(userPlan);
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(`OpenAI API Error: ${response.status} - ${errorData.error.message}`);
-            }
+            planResult.innerHTML = `<h2>✅ Generated Itinerary</h2>${formatItinerary(itineraryData)}`;
 
-            const data = await response.json();
-            const aiItinerary = data.choices[0].message.content;
-
-            planResult.innerHTML = `<h2>✅ Generated Itinerary</h2>${formatItinerary(aiItinerary)}`;
-
-            // Add Save Button after successful generation
+            // Add Save Button after generation
             const saveBtn = document.createElement('button');
             saveBtn.id = 'saveItineraryBtn';
             saveBtn.className = 'cta-btn';
             saveBtn.textContent = '💾 Save This Trip';
-            saveBtn.addEventListener('click', () => saveItinerary(userPlan, aiItinerary));
+            saveBtn.addEventListener('click', () => saveItinerary(userPlan, itineraryData));
             
             const btnContainer = document.createElement('div');
             btnContainer.style.marginTop = '15px';
@@ -85,24 +54,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error('Error generating itinerary:', error);
-            planResult.innerHTML = '<h3>❌ AI Error</h3><p>Could not generate itinerary. Check your API key or usage limits. Details: ' + error.message + '</p>';
+            planResult.innerHTML = '<h3>❌ Error</h3><p>Could not generate itinerary. Details: ' + error.message + '</p>';
         } finally {
             planBtn.disabled = false;
         }
     }
-    
-    // Function to render the markdown returned by OpenAI (simple replacement since no framework is used)
-    function formatItinerary(markdownText) {
-        let html = markdownText;
+
+    // --- Mock Itinerary Generator ---
+    function mockItineraryGenerator(userPrompt) {
+        return `
+Day 1: Arrival & Local Sightseeing in ${userPrompt}
+- Check-in at recommended hotel
+- Visit local landmarks
+- Evening free time
+
+Day 2: Explore the Highlights
+- Morning city tour
+- Lunch at popular local restaurant
+- Afternoon outdoor activity
+
+Day 3: Relax & Departure
+- Leisure morning
+- Souvenir shopping
+- Depart for home
+        `;
+    }
+
+    // Function to render itinerary text
+    function formatItinerary(text) {
+        let html = text;
         html = html.replace(/^### (.*$)/gim, '<h4>$1</h4>'); 
         html = html.replace(/^## (.*$)/gim, '<h3>$1</h3>'); 
         html = html.replace(/^# (.*$)/gim, '<h2>$1</h2>');   
         html = html.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>'); 
         html = html.replace(/\n/g, '<br>'); 
-        return `<div class="ai-markdown-output">${html}</div>`;
+        return `<div class="itinerary-output">${html}</div>`;
     }
 
-    // --- Saved Trips (Local Storage) Functionality ---
+    // --- Saved Trips (Local Storage) ---
     function loadSavedItineraries() {
         const savedTrips = JSON.parse(localStorage.getItem('savedTrips')) || [];
         savedList.innerHTML = ''; // Clear existing list
@@ -143,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         localStorage.setItem('savedTrips', JSON.stringify(savedTrips));
         alert(`Trip "${title}" saved successfully!`);
-        loadSavedItineraries(); // Reload the list
+        loadSavedItineraries();
     }
 
     function viewItinerary(index) {
@@ -156,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p><strong>Original Request:</strong> <em>${trip.description}</em></p>
                 ${formatItinerary(trip.content)}
             `;
-            // Remove the 'Save' button when viewing a saved trip
             const saveBtn = document.getElementById('saveItineraryBtn');
             if (saveBtn) saveBtn.remove();
         }
