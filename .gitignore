@@ -1,0 +1,17 @@
+# 🧠 Environment variables
+.env
+
+# 💾 Node dependencies
+node_modules/
+
+# 🧱 Build output folders
+dist/
+build/
+
+# 💻 IDE & OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# 🧹 Logs and temporary files
+*.log
