@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+ 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HiTraveller | Itinerary Builder</title>
-    <meta name="author" content="James Abraham Kaana Watongola"/>
+  <title>HiTraveller | Booking Assistant</title>
+  <meta name="author" content="James Abraham Kaana Watongola"/>
   <meta name="description" content="Tours and travel, travellers, explore"/>
-  <link rel="stylesheet" href="styles/itinerary.css" />
   <link rel="icon" type="image/png" href="images/fav.png" />
-  <script type="module" src="scripts/itinerary.js" defer></script>
+  <link rel="stylesheet" href="styles/booking.css" />
+  <script defer src="scripts/bookings.js"></script>
+  <script defer src="scripts/main.js"></script>
    <script src="scripts/storage.js" defer></script> 
 </head>
-
 <body>
   <header class="navbar">
     <div class="logo">HiTraveller</div>
@@ -23,40 +24,44 @@
     <nav class="nav-links">
       <a href="index.html">Home</a>
       <a href="discover.html">Discover</a>
-      <a href="booking.html">Booking</a>
-      <a href="itinerary.html" class="active">Itinerary</a>
+      <a href="booking.html" class="active">Booking</a>
+      <a href="itinerary.html">Itinerary</a>
     </nav>
     <button id="authBtn" class="btn-signin">Sign In</button>
   </header>
 
-  <main class="itinerary-container">
+  <main class="container">
     <section class="hero">
-      <h1>🗺️ Build Your Dream Travel Itinerary</h1>
-      <p>Describe your destination and interests — **HiTraveller’s AI** will plan your trip day by day.</p>
-    </section>
+      <h1>Book Flights & Hotels</h1>
+      <p>Let **AI** help you plan affordable, comfortable trips with suggested flight routes and hotels.</p>
 
-    <section class="itinerary-form">
-      <textarea id="planInput" placeholder="E.g., 5 days in Paris — interested in museums, food, and culture. Looking for a mix of historical sites and modern experiences."></textarea>
-      <button id="planBtn">Generate Itinerary</button>
-      <button id="clearBtn">Clear</button>
-    </section>
+      <input id="fromCity" type="text" placeholder="From (e.g., New York)" />
+      <input id="toCity" type="text" placeholder="To (e.g., Paris)" />
+      <input id="travelDates" type="text" placeholder="Dates (e.g., June 10–17)" />
 
-    <section id="planResult" class="result-box"></section>
+      <button id="bookBtn">Get Booking Suggestions</button>
 
-    <section id="savedItineraries" class="saved-section">
-      <h2>📁 Saved Itineraries</h2>
-      <ul id="savedList">
-        <li><strong>Paris Adventure</strong> - 5 Days, Culture & Food</li>
-        <li><strong>Bali Relaxation</strong> - 7 Days, Beaches & Yoga</li>
-      </ul>
+      <div id="bookResult" class="result-box"></div>
+      
+      <section id="flightResults" class="results-container">
+        <h2>Flight & Hotel Suggestions</h2>
+        <p>Enter your details and click 'Get Booking Suggestions'.</p>
+      </section>
+
+      <section id="favoritesSection" class="favorites">
+        <h2>⭐ Saved Routes</h2>
+        <ul id="favoritesList">
+          <li>NYC to London - Oct 2025 <button class="fav-btn">View</button></li>
+        </ul>
+      </section>
+
     </section>
   </main>
-
   <button id="micBtn">🎙️ Speak</button>
 
   <footer class="footer">
     <div class="footer-columns">
-     <div class="footer-col"><h3>Company</h3><ul><li><a href="#">About Us</a></li><li><a href="https://en.wikipedia.org/wiki/Career">Careers</a></li><li><a href="https://youtu.be/fKsrERSd_Lo?si=ps_H5qerjrINRz1y">Press</a></li><li><a href="https://youtu.be/9oZVMcF55tQ?si=zzBIUC_7qQMxIL3v">Blog</a></li></ul></div>
+      <div class="footer-col"><h3>Company</h3><ul><li><a href="#">About Us</a></li><li><a href="https://en.wikipedia.org/wiki/Career">Careers</a></li><li><a href="https://youtu.be/fKsrERSd_Lo?si=ps_H5qerjrINRz1y">Press</a></li><li><a href="https://youtu.be/9oZVMcF55tQ?si=zzBIUC_7qQMxIL3v">Blog</a></li></ul></div>
       <div class="footer-col"><h3>Support</h3><ul><li><a href="https://apply.joinsherpa.com/travel-restrictions">Help Center</a></li><li><a href="#">Contact Us</a></li><li><a href="https://theufuoma.com/everything-need-know-travel-faqs-answered/">FAQ</a></li><li><a href="#">Sitemap</a></li></ul></div>
       <div class="footer-col"><h3>Explore</h3><ul><li><a href="discover.html">Destinations</a></li><li><a href="https://www.skyscanner.net/">Flights</a></li><li><a href="https://www.booking.com/?aid=355028&chal_t=1760612351462&force_referer=">Hotels</a></li><li><a href="itinerary.html">Itinerary Builder</a></li></ul></div>
       <div class="subscribe">
@@ -74,6 +79,7 @@
       <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </div>
   </footer>
+
   <script src="scripts/main.js"></script>
 </body>
 </html>

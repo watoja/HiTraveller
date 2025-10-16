@@ -2,86 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HiTraveller | Discover Destinations</title>
-  <link rel="stylesheet" href="styles/general.css" />
-  <script type="module" src="scripts/discover.js" defer></script>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HiTraveller | Discover Your Next Adventure</title>
+  <meta name="author" content="James Abraham Kaana Watongola"/>
+  <meta name="description" content="Tours and travel, travellers, explore"/>
+  <link rel="icon" type="image/png" href="images/fav.png" />
+  <link rel="stylesheet" href="styles/discover.css" /> 
+  
+  
+  <!-- HEAD -->
+<script type="module" src="scripts/main.js" defer></script>
+<script src="scripts/currency.js" defer></script> 
+<script src="scripts/storage.js" defer></script> 
+<script src="scripts/home.js" defer></script>
+<!-- remove the duplicate <script src="scripts/main.js"></script> at the end -->
+
 </head>
 
 <body>
-  <!-- Header -->
   <header class="navbar">
     <div class="logo">HiTraveller</div>
-
-    <!-- Hamburger menu for mobile -->
     <button class="hamburger" aria-label="Toggle navigation">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
-
     <nav class="nav-links">
-      <a href="index.html">Welcome</a>
+      <a href="index.html">Home</a>
       <a href="discover.html" class="active">Discover</a>
-      <a href="itinerary.html">Favorite</a>
+      <a href="booking.html">Booking</a>
+      <a href="itinerary.html">Itinerary</a>
     </nav>
-
-    <button class="btn-signin">Sign In</button>
+    <button id="authBtn" class="btn-signin">Sign In</button>
   </header>
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <section class="discover-hero">
-      <div class="discover-text">
-        <h1>Discover Top Travel Destinations</h1>
-        <p>Find inspiration for your next journey — from iconic cities to hidden gems worldwide.</p>
-      </div>
-    </section>
+  <main class="container">
+    <section class="hero">
+      <h1>Find the Perfect Destination</h1>
+      <p>Describe your ideal getaway and let HiTraveller's AI recommend amazing destinations worldwide.</p>
 
-    <section class="discover-section">
-      <h2>Explore Our Curated List</h2>
-      <div class="destination-list">
-        <!-- Destination cards will be inserted dynamically -->
-      </div>
+      <textarea id="destInput" placeholder="E.g. I want beaches, nightlife, and nature for a 7-day trip in Southeast Asia..."></textarea>
+      <button id="findBtn">Find Destination</button>
+
+      <div id="resultBox" class="result-box"></div>
     </section>
   </main>
 
-  <!-- Footer -->
-    <footer class="footer">
+  <button id="micBtn">🎙️ Speak</button>
+
+  <footer class="footer">
     <div class="footer-columns">
       <div class="footer-col">
-        <h3>Column one</h3>
+        <h3>Company</h3>
         <ul>
-          <li><a href="#">Link one</a></li>
-          <li><a href="#">Link two</a></li>
-          <li><a href="#">Link three</a></li>
-          <li><a href="#">Link four</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Career">Careers</a></li>
+          <li><a href="https://youtu.be/fKsrERSd_Lo?si=ps_H5qerjrINRz1y">Press</a></li>
+          <li><a href="https://youtu.be/9oZVMcF55tQ?si=zzBIUC_7qQMxIL3v">Blog</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h3>Column two</h3>
+        <h3>Support</h3>
         <ul>
-          <li><a href="#">Link five</a></li>
-          <li><a href="#">Link six</a></li>
-          <li><a href="#">Link seven</a></li>
-          <li><a href="#">Link eight</a></li>
+          <li><a href="https://apply.joinsherpa.com/travel-restrictions">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="https://theufuoma.com/everything-need-know-travel-faqs-answered/">FAQ</a></li>
+          <li><a href="#">Sitemap</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h3>Column three</h3>
+        <h3>Explore</h3>
         <ul>
-          <li><a href="#">Link nine</a></li>
-          <li><a href="#">Link ten</a></li>
-          <li><a href="#">Link eleven</a></li>
-          <li><a href="#">Link twelve</a></li>
+          <li><a href="discover.html">Destinations</a></li>
+          <li><a href="https://www.skyscanner.net/">Flights</a></li>
+          <li><a href="https://www.booking.com/?aid=355028&chal_t=1760612351462&force_referer=">Hotels</a></li>
+          <li><a href="itinerary.html">Itinerary Builder</a></li>
         </ul>
       </div>
 
       <div class="subscribe">
-        <h3>Subscribe</h3>
-        <p>Simply enter your email below:</p>
+        <h3>Subscribe to Newsletter</h3>
+        <p>Simply enter your email below to get the best travel tips:</p>
         <form id="subscribeForm">
           <input type="email" placeholder="Your email" required />
           <button type="submit">Subscribe</button>
@@ -96,7 +99,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+ 
 </body>
 </html>
-

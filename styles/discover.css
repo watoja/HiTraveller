@@ -1,0 +1,44 @@
+@import url('base.css');
+
+/****************************************************
+ * FILE: discover.css
+ * ---------------------------------------------
+ * PURPOSE: Specific styles for discover.html.
+ ****************************************************/
+
+/* Overrides/Page-specific container styles */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Removed padding here as it's in base.css */
+}
+
+/* === HERO SECTION (AI Glow effect is unique here) === */
+.hero {
+  text-align: center;
+  background: white;
+  padding: 2.5rem 2.5rem 3rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 74, 173, 0.1);
+  max-width: 700px;
+  width: 100%;
+  animation: fadeIn 1s ease-out;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #004aad, #00c6ff);
+  z-index: -1;
+  filter: blur(20px);
+  opacity: 0.3;
+}
+
+/* Keyframes copied to base.css, removing from here */

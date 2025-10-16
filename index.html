@@ -4,97 +4,103 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HiTraveller | Discover Your Next Adventure</title>
-  <link rel="stylesheet" href="styles/general.css" />
+  <meta name="author" content="James Abraham Kaana Watongola"/>
+  <meta name="description" content="Tours and travel, travellers, explore"/>
+  <link rel="icon" type="image/png" href="images/fav.png" />
+  <link rel="stylesheet" href="styles/home.css" /> 
+  <link rel="stylesheet" href="styles/base.css" />
   <script type="module" src="scripts/main.js" defer></script>
-
+  <script src="scripts/currency.js" defer></script> 
+   <script src="scripts/storage.js" defer></script> 
+  <script src="scripts/home.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <header class="navbar">
     <div class="logo">HiTraveller</div>
-
-  <button class="hamburger" aria-label="Toggle navigation">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </button>
+    <button class="hamburger" aria-label="Toggle navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
     <nav class="nav-links">
-      <a href="index.html">Welcome</a>
-      <a href="discover.html">Discover</a>
-      <a href="itinerary.html">Favorite</a>
-      
+      <a href="index.html">Home</a>
+      <a href="discover.html" class="active">Discover</a>
+      <a href="booking.html">Booking</a>
+      <a href="itinerary.html">Itinerary</a>
     </nav>
-    <button class="btn-signin">Sign In</button>
+    <button id="authBtn" class="btn-signin">Sign In</button>
   </header>
 
   <main class="main-content">
     <section class="hero">
-      <div class="hero-text">
-        <h1>Discover Beautiful Destinations</h1>
-        <p>
-          Explore breathtaking places and plan your perfect getaway with HiTraveller.
-          Find destinations, compare prices, and travel smarter.
-        </p>
-        <button class="cta-btn">Get Started</button>
-      </div>
+    <div class="hero-text">
+      <h1>Discover Beautiful Destinations</h1>
+      <p>
+        Explore breathtaking places and plan your perfect getaway with HiTraveller.
+        Find destinations, compare prices, and travel smarter with AI assistance.
+      </p>
+      <button class="cta-btn"><a href="discover.html">Get Started</a></button>
+    </div>
 
-      <div class="hero-images">
-        <div class="hero-main-img"></div>
-        <div class="hero-side-img"></div>
-      </div>
+    <!-- ADDED -->
+<div id="heroSlideshow" class="slideshow-wrapper">
+    <!-- The slideshow images and captions are generated here by scripts/home.js -->
+</div>
+    </div>
+  </section>
+
+    <section id="currencyConverter" class="converter-section">
+        <h2>💰 Real-time Currency Converter</h2>
+        <p>Powered by the **Frankfurter API**</p>
+        <div class="converter-controls">
+            <input type="number" id="amountInput" value="100" min="1" />
+            <select id="fromCurrency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="JPY">JPY</option>
+                <option value="UGX">UGX</option>
+            </select>
+            <span>to</span>
+            <select id="toCurrency">
+                <option value="EUR">EUR</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+                <option value="JPY">JPY</option>
+                <option value="UGX">UGX</option>
+            </select>
+            <button id="convertBtn">Convert</button>
+        </div>
+        <div id="conversionResult" class="result-box">
+            Enter an amount and select currencies to convert.
+        </div>
     </section>
-
     <section class="features">
       <div class="feature">
-        <h2>Find the Perfect Destination</h2>
-        <p>Search global destinations and plan your next adventure.</p>
+        <h2><a href="discover.html">Find the Perfect Destination</a></h2>
+        <p>Search global destinations and plan your next adventure using AI recommendations.</p>
       </div>
       <div class="feature">
-        <h2>Book Flights & Hotels</h2>
-        <p>Compare flight and hotel deals easily in one place.</p>
+        <h2><a href="booking.html">Flights & Hotels</a> </h2>
+        <p>Compare flight and hotel deals easily in one place with smart suggestions.</p>
       </div>
       <div class="feature">
-        <h2>Track Itineraries</h2>
-        <p>Stay organized and never miss a moment on your trip.</p>
+        <h2><a href="itinerary.html">Track Itineraries</a></h2>
+        <p>Stay organized and generate day-by-day plans for your trip effortlessly.</p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="footer-columns">
-      <div class="footer-col">
-        <h3>Column one</h3>
-        <ul>
-          <li><a href="#">Link one</a></li>
-          <li><a href="#">Link two</a></li>
-          <li><a href="#">Link three</a></li>
-          <li><a href="#">Link four</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h3>Column two</h3>
-        <ul>
-          <li><a href="#">Link five</a></li>
-          <li><a href="#">Link six</a></li>
-          <li><a href="#">Link seven</a></li>
-          <li><a href="#">Link eight</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h3>Column three</h3>
-        <ul>
-          <li><a href="#">Link nine</a></li>
-          <li><a href="#">Link ten</a></li>
-          <li><a href="#">Link eleven</a></li>
-          <li><a href="#">Link twelve</a></li>
-        </ul>
-      </div>
-
+      <div class="footer-col"><h3>Company</h3><ul><li><a href="#">About Us</a></li><li><a href="https://en.wikipedia.org/wiki/Career">Careers</a></li><li><a href="https://youtu.be/fKsrERSd_Lo?si=ps_H5qerjrINRz1y">Press</a></li><li><a href="https://youtu.be/9oZVMcF55tQ?si=zzBIUC_7qQMxIL3v">Blog</a></li></ul></div>
+      <div class="footer-col"><h3>Support</h3><ul><li><a href="https://apply.joinsherpa.com/travel-restrictions">Help Center</a></li><li><a href="#">Contact Us</a></li><li><a href="https://theufuoma.com/everything-need-know-travel-faqs-answered/">FAQ</a></li><li><a href="#">Sitemap</a></li></ul></div>
+      <div class="footer-col"><h3>Explore</h3><ul><li><a href="discover.html">Destinations</a></li><li><a href="https://www.skyscanner.net/">Flights</a></li><li><a href="https://www.booking.com/?aid=355028&chal_t=1760612351462&force_referer=">Hotels</a></li><li><a href="itinerary.html">Itinerary Builder</a></li></ul></div>
       <div class="subscribe">
-        <h3>Subscribe</h3>
-        <p>Simply enter your email below:</p>
+        <h3>Subscribe to Newsletter</h3>
+        <p>Simply enter your email below to get the best travel tips:</p>
         <form id="subscribeForm">
           <input type="email" placeholder="Your email" required />
           <button type="submit">Subscribe</button>
@@ -102,13 +108,11 @@
         <small>By subscribing, you agree to our Privacy Policy.</small>
       </div>
     </div>
-
     <div class="footer-bottom">
       <p>© 2025 HiTraveller. All rights reserved.</p>
-      <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
 </body>
 </html>

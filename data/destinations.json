@@ -17,7 +17,7 @@
       "country": "Japan",
       "region": "Asia",
       "description": "Explore Japan’s vibrant capital—where futuristic technology meets ancient traditions and world-class cuisine.",
-      "image": "https://images.unsplash.com/photo-1505066836043-7a2ae83d1338",
+      "image": "https://unsplash.com/photos/boats-on-body-of-water-824OwkP7sgk",
       "average_price": 1500,
       "best_season": "Autumn",
       "rating": 4.9
@@ -28,7 +28,7 @@
       "country": "United States",
       "region": "North America",
       "description": "Discover the Big Apple, home to Times Square, Broadway, and an endless skyline that never sleeps.",
-      "image": "https://images.unsplash.com/photo-1549924231-f129b911e442",
+      "image": "https://unsplash.com/photos/landscape-photo-of-new-york-empire-state-building-5omwAMDxmkU",
       "average_price": 1100,
       "best_season": "Fall",
       "rating": 4.7
@@ -39,7 +39,7 @@
       "country": "South Africa",
       "region": "Africa",
       "description": "A coastal gem at the foot of Table Mountain, offering ocean views, culture, and stunning wildlife.",
-      "image": "https://images.unsplash.com/photo-1542051841857-5f90071e7989",
+      "image": "https://unsplash.com/photos/aerial-view-of-city-near-mountain-during-daytime-kpdWINVf3JI",
       "average_price": 900,
       "best_season": "Summer",
       "rating": 4.6
@@ -50,7 +50,7 @@
       "country": "Australia",
       "region": "Oceania",
       "description": "Visit the Sydney Opera House, enjoy sunny beaches, and explore vibrant harbor life.",
-      "image": "https://images.unsplash.com/photo-1506976785307-8732e854ad75",
+      "image": "https://unsplash.com/photos/a-birds-eye-view-of-the-sydney-habor-with-a-background-of-the-harbor-bridge-in-barangaroo-australia-XPbHfJovRJE",
       "average_price": 1400,
       "best_season": "Spring",
       "rating": 4.8
@@ -61,7 +61,7 @@
       "country": "Italy",
       "region": "Europe",
       "description": "Walk through ancient history in Rome—home to the Colosseum, Roman Forum, and incredible Italian cuisine.",
-      "image": "https://images.unsplash.com/photo-1509395176047-4a66953fd231",
+      "image": "https://unsplash.com/photos/a-view-of-a-roman-colossion-from-across-the-street-ndBYzLYHJDQ",
       "average_price": 1000,
       "best_season": "Fall",
       "rating": 4.7
@@ -72,7 +72,7 @@
       "country": "United Arab Emirates",
       "region": "Middle East",
       "description": "A luxury city blending desert adventures, futuristic skyscrapers, and world-class shopping.",
-      "image": "https://images.unsplash.com/photo-1504274066651-8d31a536b11a",
+      "image": "https://unsplash.com/photos/burj-al-arab-dubai-7tb-b37yHx4",
       "average_price": 1300,
       "best_season": "Winter",
       "rating": 4.8
@@ -83,7 +83,7 @@
       "country": "Brazil",
       "region": "South America",
       "description": "Dance to the rhythm of samba, relax on Copacabana Beach, and marvel at Christ the Redeemer.",
-      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+      "image": "https://unsplash.com/photos/aerial-photography-of-cityscape-near-sea-7F65HDP0-E0",
       "average_price": 950,
       "best_season": "Summer",
       "rating": 4.6

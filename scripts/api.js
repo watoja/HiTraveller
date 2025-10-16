@@ -2,7 +2,7 @@
 export async function getDestinations(query) {
   try {
     const response = await fetch(`https://api.api-ninjas.com/v1/city?name=${query}`, {
-      headers: { "X-Api-Key": "YOUR_API_KEY" }
+      headers: { "X-Api-Key": "sk-...KTQA" }
     });
     const data = await response.json();
 
