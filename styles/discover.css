@@ -1,44 +1,161 @@
-@import url('base.css');
+/* -------------------------------
+   Discover Page Styles
+---------------------------------*/
 
-/****************************************************
- * FILE: discover.css
- * ---------------------------------------------
- * PURPOSE: Specific styles for discover.html.
- ****************************************************/
-
-/* Overrides/Page-specific container styles */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* Removed padding here as it's in base.css */
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  background-color: #f7f7f7;
+  color: #333;
 }
 
-/* === HERO SECTION (AI Glow effect is unique here) === */
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
 .hero {
   text-align: center;
-  background: white;
-  padding: 2.5rem 2.5rem 3rem 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 16px rgba(0, 74, 173, 0.1);
-  max-width: 700px;
+  background-color: #e0f7fa;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+textarea#destInput {
   width: 100%;
-  animation: fadeIn 1s ease-out;
-  position: relative;
+  height: 100px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  margin-bottom: 1rem;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  border-radius: 20px;
-  background: linear-gradient(45deg, #004aad, #00c6ff);
-  z-index: -1;
-  filter: blur(20px);
-  opacity: 0.3;
+button#findBtn, button#micBtn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #008cba;
+  color: #fff;
+  transition: background 0.2s;
+  margin: 0.5rem;
 }
 
-/* Keyframes copied to base.css, removing from here */
+button#findBtn:hover, button#micBtn:hover {
+  background-color: #0079a1;
+}
+
+.result-box {
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.destination-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+  text-align: center;
+}
+
+.destination-card:hover {
+  transform: scale(1.03);
+}
+
+.destination-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.destination-card h3 {
+  margin: 0.5rem 0;
+}
+
+.destination-card p {
+  padding: 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.cta-btn {
+  margin: 0.8rem 0 1rem 0;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff5722;
+  color: white;
+  cursor: pointer;
+}
+
+.cta-btn:hover {
+  background-color: #e64a19;
+}
+
+/* Footer */
+.footer {
+  background-color: #263238;
+  color: #fff;
+  padding: 2rem 1rem 1rem;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-col, .subscribe {
+  flex: 1 1 200px;
+}
+
+.footer-col h3, .subscribe h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin: 0.5rem 0;
+}
+
+.footer-col ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-col ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #555;

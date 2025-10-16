@@ -1,78 +1,101 @@
 /****************************************************
  * FILE: discover.js
  * ---------------------------------------------
- * PURPOSE: Destination search using OpenAI (Client-Side).
+ * PURPOSE: Destination search using local JSON data.
  ****************************************************/
+
 document.addEventListener('DOMContentLoaded', () => {
-    const findBtn = document.getElementById('findBtn');
-    const destInput = document.getElementById('destInput');
-    const resultBox = document.getElementById('resultBox');
+  const findBtn = document.getElementById('findBtn');
+  const destInput = document.getElementById('destInput');
+  const resultBox = document.getElementById('resultBox');
+  const micBtn = document.getElementById('micBtn');
 
-    // --- ⚠️ INSECURE: YOUR OPENAI API KEY ---
-    // This key is visible to anyone inspecting the page source.
-    const OPENAI_API_KEY = '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'; 
-    // ------------------------------------------
+  // Load destinations.json
+  async function loadDestinations() {
+    try {
+      const response = await fetch('data/destinations.json');
+      if (!response.ok) throw new Error('Failed to load destinations.');
+      return await response.json();
+    } catch (err) {
+      console.error('Error loading destination data:', err);
+      resultBox.innerHTML = `<p class="error">❌ Could not load destination data.</p>`;
+      return [];
+    }
+  }
 
-    if (findBtn) {
-        findBtn.addEventListener('click', findDestination);
+  // Event listeners
+  if (findBtn) findBtn.addEventListener('click', findDestination);
+  if (micBtn) micBtn.addEventListener('click', useSpeech);
+
+  // Find destination based on input
+  async function findDestination() {
+    const userPrompt = destInput.value.trim().toLowerCase();
+    if (!userPrompt) {
+      resultBox.innerHTML = '<p>Please describe your ideal getaway.</p>';
+      return;
     }
 
-    async function findDestination() {
-        const userPrompt = destInput.value.trim();
-        if (!userPrompt) {
-            resultBox.innerHTML = 'Please describe your ideal getaway.';
-            return;
-        }
+    resultBox.innerHTML = `<h3>🌍 Searching...</h3><p>Finding destinations that match: "${userPrompt}"</p>`;
+    findBtn.disabled = true;
 
-        resultBox.innerHTML = '<h3>🤖 Thinking...</h3><p>HiTraveller AI is finding destinations based on: "' + userPrompt + '"</p>';
-        findBtn.disabled = true;
+    const destinations = await loadDestinations();
 
-        try {
-            // =======================================================
-            // 💡 OPENAI API DIRECT CALL: Power text generation
-            // =======================================================
-            const API_URL = 'https://api.openai.com/v1/chat/completions'; 
-            
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + OPENAI_API_KEY // Key usage
-                },
-                body: JSON.stringify({ 
-                    model: "gpt-3.5-turbo",
-                    messages: [
-                        {"role": "system", "content": "You are a witty, concise travel advisor. Provide one clear, top destination recommendation based on the user's prompt, along with a brief reason."},
-                        {"role": "user", "content": userPrompt}
-                    ],
-                    max_tokens: 150
-                })
-            });
-            
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(`OpenAI API Error: ${response.status} - ${errorData.error ? errorData.error.message : response.statusText}`);
-            }
+    // Simple keyword match
+    const matched = destinations.filter(dest => {
+      const keywords = `${dest.name} ${dest.region} ${dest.description} ${dest.type}`.toLowerCase();
+      return userPrompt.split(' ').some(word => keywords.includes(word));
+    });
 
-            const data = await response.json();
-            const aiRecommendation = data.choices[0].message.content;
-
-            resultBox.innerHTML = formatAiResponse(aiRecommendation);
-
-        } catch (error) {
-            console.error('Error finding destination:', error);
-            resultBox.innerHTML = '<h3>❌ AI Error</h3><p>Could not retrieve AI recommendations. Possible reasons: Invalid API Key or network error. Details: ' + error.message + '</p>';
-        } finally {
-            findBtn.disabled = false;
-        }
+    if (matched.length > 0) {
+      resultBox.innerHTML = renderDestinations(matched);
+    } else {
+      resultBox.innerHTML = `<h3>😕 No match found</h3><p>Try describing your preferences differently.</p>`;
     }
 
-    function formatAiResponse(text) {
-        let html = `<h2>✨ AI Recommended Destination</h2>`;
-        // Replace newlines with paragraph tags for better display
-        html += text.split('\n').map(p => `<p>${p}</p>`).join('');
-        html += `<button class="cta-btn" onclick="window.location.href='booking.html'">Start Booking Now</button>`;
-        return html;
+    findBtn.disabled = false;
+  }
+
+  // Render matched destinations
+  function renderDestinations(destinations) {
+    return `
+      <h2>✨ Recommended Destinations</h2>
+      <div class="destination-grid">
+        ${destinations.map(dest => `
+          <div class="destination-card">
+            <img src="${dest.image}" alt="${dest.name}">
+            <h3>${dest.name}</h3>
+            <p><strong>Region:</strong> ${dest.region}</p>
+            <p>${dest.description}</p>
+            <button class="cta-btn" onclick="window.location.href='booking.html'">Book Now</button>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  // Speech recognition (Web Speech API)
+  function useSpeech() {
+    if (!('webkitSpeechRecognition' in window)) {
+      alert('Speech Recognition not supported in this browser.');
+      return;
     }
+
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    recognition.start();
+
+    recognition.onresult = event => {
+      const speechResult = event.results[0][0].transcript;
+      destInput.value = speechResult;
+      findDestination();
+    };
+
+    recognition.onerror = event => {
+      console.error('Speech recognition error:', event.error);
+      alert('Speech recognition error: ' + event.error);
+    };
+  }
 });
-
